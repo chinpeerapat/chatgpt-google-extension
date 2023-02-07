@@ -24,6 +24,10 @@
   "content_scripts": [
     {
       "matches": [
+        "https://*/*",
+        "https://*.jtbc.co.kr/*",
+        "https://*.news.naver.com/*",
+        "https://medium.com/*",
         "https://*.daum.net/*",
         "https://www.google.com/search*",
         "https://www.google.ad/search*",

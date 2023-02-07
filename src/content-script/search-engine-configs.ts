@@ -17,6 +17,20 @@ export const config: Record<string, SearchEngine> = {
 
     appendContainerQuery: [],
   },
+
+  arxiv: {
+    inputQuery: ['#abs'],
+    sidebarContainerQuery: ['div[class="submission-history"]'],
+
+    appendContainerQuery: [],
+  },
+
+  medium: {
+    inputQuery: ['root'],
+    sidebarContainerQuery: ['div[class="dh bf bk di"]'],
+
+    appendContainerQuery: [],
+  },
   jtbc: {
     inputQuery: ['articlebody'],
     sidebarContainerQuery: ['#id_right_news_main'],
@@ -74,8 +88,8 @@ export const config: Record<string, SearchEngine> = {
     appendContainerQuery: [],
   },
   naver: {
-    inputQuery: ["input[name='query']"],
-    sidebarContainerQuery: ['#sub_pack'],
+    inputQuery: ['ct'],
+    sidebarContainerQuery: ['#ct'],
     appendContainerQuery: ['#content'],
   },
   brave: {

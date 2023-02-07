@@ -1,8 +1,8 @@
 {
   "appName": {
-    "message": "ChatGPT for Google"
+    "message": "ChatGPT Web QA"
   },
   "appDesc": {
-    "message": "Display ChatGPT response alongside search engine results"
+    "message": "Summarize Web Content and QA"
   }
 }

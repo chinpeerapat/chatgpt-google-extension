@@ -1,8 +1,8 @@
 {
   "appName": {
-    "message": "ChatGPT for Google"
+    "message": "ChatGPT Web QA"
   },
   "appDesc": {
-    "message": "ChatGPT의 응답과 검색 엔진 결과를 함께 표시하라"
+    "message": "ChatGPT로 웹페이지를 요약하고 이에대한 질문을 나눕니다."
   }
 }

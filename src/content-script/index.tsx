@@ -49,14 +49,14 @@ async function run() {
   console.debug('Try to Mount ChatGPT on', siteName)
 
   if (siteConfig.inputQuery) {
-    const bodyElement = document.getElementById(siteConfig.inputQuery[0])
+    const bodyElement = getPossibleElementByQuerySelector(siteConfig.inputQuery)
 
     if (bodyElement && bodyElement.innerText) {
       const bodyInnerText = bodyElement.innerText.substring(0, 500)
       console.log('Reading: ' + bodyInnerText)
-      const prompt =
-        'Summarize in one sentence and write lesson learned from the article. Also list all people in the article using bullets:\n\n\n'
-      mount(prompt + bodyInnerText, siteConfig)
+
+      const userConfig = await getUserConfig()
+      mount(userConfig.prompt + bodyInnerText, siteConfig)
     }
   }
 
