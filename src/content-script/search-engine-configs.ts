@@ -26,18 +26,18 @@ export const config: Record<string, SearchEngine> = {
   },
 
   medium: {
-    inputQuery: ['root'],
+    inputQuery: ['#root'],
     sidebarContainerQuery: ['div[class="dh bf bk di"]'],
 
     appendContainerQuery: [],
   },
   jtbc: {
-    inputQuery: ['articlebody'],
+    inputQuery: ['#articlebody'],
     sidebarContainerQuery: ['#id_right_news_main'],
     appendContainerQuery: [],
   },
   daum: {
-    inputQuery: ['mArticle'],
+    inputQuery: ['#mArticle'],
     sidebarContainerQuery: ['div[data-cvdc-comp-name="toros_recommend_one_column"]'],
     appendContainerQuery: [],
   },
