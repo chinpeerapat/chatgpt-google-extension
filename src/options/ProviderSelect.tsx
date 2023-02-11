@@ -1,8 +1,8 @@
 import { Button, Input, Select, Spinner, Tabs, useInput, useToasts } from '@geist-ui/core'
 import { FC, useCallback, useState } from 'react'
 import useSWR from 'swr'
+import { fetchExtensionConfigs } from '../api'
 import { getProviderConfigs, ProviderConfigs, ProviderType, saveProviderConfigs } from '../config'
-import { API_HOST } from '../utils'
 
 interface ConfigProps {
   config: ProviderConfigs
@@ -10,8 +10,8 @@ interface ConfigProps {
 }
 
 async function loadModels(): Promise<string[]> {
-  const config = await fetch(`${API_HOST}/api/config`).then((r) => r.json())
-  return config.openai_model_names
+  const configs = await fetchExtensionConfigs()
+  return configs.openai_model_names
 }
 
 const ConfigPanel: FC<ConfigProps> = ({ config, models }) => {
@@ -26,6 +26,10 @@ const ConfigPanel: FC<ConfigProps> = ({ config, models }) => {
         alert('Please enter your OpenAI API key')
         return
       }
+      if (!model || !models.includes(model)) {
+        alert('Please select a valid model')
+        return
+      }
     }
     await saveProviderConfigs(tab, {
       [ProviderType.GPT3]: {
@@ -34,7 +38,7 @@ const ConfigPanel: FC<ConfigProps> = ({ config, models }) => {
       },
     })
     setToast({ text: 'Changes saved', type: 'success' })
-  }, [apiKeyBindings.value, model, setToast, tab])
+  }, [apiKeyBindings.value, model, models, setToast, tab])
 
   return (
     <div className="flex flex-col gap-3">
@@ -44,9 +48,17 @@ const ConfigPanel: FC<ConfigProps> = ({ config, models }) => {
         </Tabs.Item>
         <Tabs.Item label="OpenAI API" value={ProviderType.GPT3}>
           <div className="flex flex-col gap-2">
-            <span>OpenAI official API, more stable, charge by usage</span>
+            <span>
+              OpenAI official API, more stable,{' '}
+              <span className="font-semibold">charge by usage</span>
+            </span>
             <div className="flex flex-row gap-2">
-              <Select scale={2 / 3} value={model} onChange={(v) => setModel(v as string)}>
+              <Select
+                scale={2 / 3}
+                value={model}
+                onChange={(v) => setModel(v as string)}
+                placeholder="model"
+              >
                 {models.map((m) => (
                   <Select.Option key={m} value={m}>
                     {m}
