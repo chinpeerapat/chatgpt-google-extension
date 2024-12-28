@@ -20,7 +20,8 @@ async function generateAnswers(
     cleanup?.()
   })
 
-  const { cleanup } = await provider.generateAnswer({
+  let cleanup: (() => void) | undefined
+  const result = await provider.generateAnswer({
     prompt: question,
     previousMessages: previousMessages,
     signal: controller.signal,
