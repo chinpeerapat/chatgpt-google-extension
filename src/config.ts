@@ -3,19 +3,14 @@ import Browser from 'webextension-polyfill'
 
 export enum TriggerMode {
   Always = 'always',
-  QuestionMark = 'questionMark',
   Manually = 'manually',
 }
 
 export const TRIGGER_MODE_TEXT = {
-  [TriggerMode.Always]: { title: 'Always', desc: 'ChatGPT is queried on every search' },
-  [TriggerMode.QuestionMark]: {
-    title: 'Question Mark',
-    desc: 'When your query ends with a question mark (?)',
-  },
+  [TriggerMode.Always]: { title: 'Always', desc: 'ArxivGPT is queried on every search' },
   [TriggerMode.Manually]: {
     title: 'Manually',
-    desc: 'ChatGPT is queried when you manually click a button',
+    desc: 'ArxivGPT is queried when you manually click a button',
   },
 }
 
@@ -37,10 +32,26 @@ export enum Language {
   Portuguese = 'portuguese',
 }
 
+export const Prompt =
+  'Please summarize the paper by author(s) in one concise sentence. \
+ Then, list key insights and lessons learned from the paper.\
+ Next, generate 3-5 questions that you would like to ask the authors about their work. \
+ Finally, provide 3-5 suggestions for related topics or future research directions \
+ based on the content of the paper. \
+ If applicable, list at least 5 relevant references from the field of study of the paper. \
+ '
+
+export interface SitePrompt {
+  site: string
+  prompt: string
+}
+
 const userConfigWithDefaultValue = {
   triggerMode: TriggerMode.Always,
   theme: Theme.Auto,
   language: Language.Auto,
+  prompt: Prompt,
+  promptOverrides: [] as SitePrompt[],
 }
 
 export type UserConfig = typeof userConfigWithDefaultValue
@@ -56,7 +67,6 @@ export async function updateUserConfig(updates: Partial<UserConfig>) {
 }
 
 export enum ProviderType {
-  ChatGPT = 'chatgpt',
   GPT3 = 'gpt3',
 }
 
@@ -73,7 +83,7 @@ export interface ProviderConfigs {
 }
 
 export async function getProviderConfigs(): Promise<ProviderConfigs> {
-  const { provider = ProviderType.ChatGPT } = await Browser.storage.local.get('provider')
+  const { provider = ProviderType.GPT3 } = await Browser.storage.local.get('provider')
   const configKey = `provider:${ProviderType.GPT3}`
   const result = await Browser.storage.local.get(configKey)
   return {

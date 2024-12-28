@@ -1,43 +1,22 @@
-# ChatGPT for Google
+# arXivGPT
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/wong2/chatgpt-google-extension/pre-release-build.yml)
-[![Twitter Follow](https://img.shields.io/twitter/follow/chatgpt4google?style=social)](https://twitter.com/chatgpt4google)
-![License](https://img.shields.io/github/license/wong2/chatgpt-google-extension)
+[link-chrome]: https://chrome.google.com/webstore/detail/arxivgpt/fbbfpcjhnnklhmncjickdipdlhoddjoh?hl=en&authuser=0 'Chrome Web Store'
 
-### Notice (2023-02-20)
-
-As this extension has been acquired, this code repository will no longer be updated from now on.
-
-# My new project: [ChatHub: All-in-one chatbot client](https://github.com/chathub-dev/chathub)
-
----
-
-A browser extension to display ChatGPT response alongside Google (and other search engines) results
-
-[Install from Chrome Web Store](https://chatgpt4google.com/chrome?utm_source=github)
-
-[Install from Mozilla Add-on Store](https://chatgpt4google.com/firefox?utm_source=github)
-
-## Supported Search Engines
-
-Google, Baidu, Bing, DuckDuckGo, Brave, Yahoo, Naver, Yandex, Kagi, Searx
+[<img src="https://user-images.githubusercontent.com/3750161/214147732-c75e96a4-48a4-4b64-b407-c2402e899a75.PNG" height="67" alt="Chrome" valign="middle">][link-chrome]
 
 ## Screenshot
 
-![Screenshot](screenshots/extension.png?raw=true)
+<img width="1418" alt="image" src="https://user-images.githubusercontent.com/901975/217130285-20d0bf67-e9a8-46ca-9d9d-f49b42515a7d.png">
 
-## Features
+## Avaiable Sites (TBA or TBA as a configuration feature)
+* "https://arxiv.org/*",
+* "https://www.biorxiv.org/content/*",
+* "https://pubmed.ncbi.nlm.nih.gov/*",
+* "https://ieeexplore.ieee.org/document/*"
 
-- Supports all popular search engines
-- Supports the official OpenAI API
-- Supports ChatGPT Plus
-- Markdown rendering
-- Code highlights
-- Dark mode
-- Provide feedback to improve ChatGPT
-- Copy to clipboard
-- Custom trigger mode
-- Switch languages
+## Custom Prompt
+You can change the prompt.
+<img width="1031" alt="image" src="https://user-images.githubusercontent.com/901975/217131081-d5487c3f-cb5c-46f4-be21-e4f1a22e9fce.png">
 
 ## Troubleshooting
 
@@ -60,7 +39,7 @@ Enable "Allow access to search page results" in the extension management page
 3. `npm run build`
 4. Load `build/chromium/` or `build/firefox/` directory to your browser
 
-## Star History
+## Credit
 
-[![Star History Chart](https://api.star-history.com/svg?repos=wong2/chatgpt-google-extension&type=Date)](https://star-history.com/#wong2/chatgpt-google-extension&Date)
-
+This project is inspired by [ZohaibAhmed/ChatGPT-Google](https://github.com/ZohaibAhmed/ChatGPT-Google) and https://github.com/wong2/chatgpt-google-extension
+This project is inspired by [ZohaibAhmed/ChatGPT-Google](https://github.com/ZohaibAhmed/ChatGPT-Google) and wong2/chatgpt-google-extension

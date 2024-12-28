@@ -11,8 +11,11 @@ export type Event =
 
 export interface GenerateAnswerParams {
   prompt: string
+  previousMessages: object[]
   onEvent: (event: Event) => void
   signal?: AbortSignal
+  conversationId?: string
+  parentMessageId?: string
 }
 
 export interface Provider {
